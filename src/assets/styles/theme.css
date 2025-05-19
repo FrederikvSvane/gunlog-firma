@@ -1,0 +1,45 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  color: #FFB22C;
+  font-family: 'Snell Roundhand', cursive;
+}
+
+h1, h2, h3 {
+    color: #FFB22C;
+}
+
+nav {
+    background-color: black;
+    border-bottom: 2px solid #FFB22C;
+}
+
+a {
+    color: #FFB22C;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    background-color: black;
+    color: #FFB22C;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto;
+    width: 150px; /* Adjust as needed */
+}
+
+.catchphrase {
+    text-align: center;
+    font-size: 1.5em;
+    margin: 20px 0;
+}

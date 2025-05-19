@@ -1,18 +1,34 @@
+<script setup lang="ts">
+// No additional logic needed
+</script>
+
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+    <h1>Firmaet</h1>
+    <p class="catchphrase">Fordi coke og ludere godt kan trækkes fra i skat</p>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
+<style scoped>
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: black;
+  color: #ffb22c;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden; /* Prevent scrolling specifically on home page */
+}
 
-export default defineComponent({
-  name: "HomeView",
-  components: {
-    HelloWorld,
-  },
-});
-</script>
+h1 {
+  font-size: 4em; /* Increased font size for Firmaet */
+}
+
+.catchphrase {
+  font-size: 1.6em;
+  margin-top: 20px;
+}
+</style>
