@@ -1,10 +1,10 @@
 html, body {
-  height: 100%;
   margin: 0;
   padding: 0;
   background-color: black;
   color: #FFB22C;
   font-family: 'Snell Roundhand', cursive;
+  min-height: 100%;
 }
 
 h1, h2, h3 {

@@ -197,11 +197,19 @@ onMounted(() => {
 <style scoped>
 .graph-container {
   width: 100%;
-  height: 60vh;
+  height: 400px;
+  max-height: 60vh;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
+}
+
+@media (max-width: 600px) {
+  .graph-container {
+    height: 300px;
+    padding: 10px;
+  }
 }
 
 .chart-wrapper {

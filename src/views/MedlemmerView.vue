@@ -153,6 +153,8 @@ const members = ref([
     <h1 class="elegant-title">Medlemmer</h1>
     <p class="intro-text">
       Hver person på denne liste ejer aktier og Rolex for mere end 18 mia. dkk.
+      <br />
+      (Undtagen Andreas Nørby, han ejer to dåseøl og én pakke smøger)
     </p>
 
     <div class="members-grid">
@@ -175,7 +177,7 @@ const members = ref([
   font-family: "Times New Roman", Times, serif;
   padding: 20px;
   text-align: center;
-  min-height: 100vh;
+  min-height: calc(100vh - 120px);
 }
 
 .countdown-container {

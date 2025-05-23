@@ -19,11 +19,10 @@ import Footer from "./components/AppFooter.vue";
 #app {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 main {
   flex: 1;
-  overflow: auto;
 }
 </style>

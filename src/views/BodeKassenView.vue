@@ -144,7 +144,7 @@
   font-family: "Times New Roman", Times, serif;
   padding: 20px;
   text-align: center;
-  min-height: 100vh;
+  min-height: calc(100vh - 120px);
 }
 
 .payment-link {

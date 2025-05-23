@@ -61,12 +61,11 @@ onMounted(() => {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  min-height: calc(100vh - 120px); /* Account for navbar and footer */
   background-color: black;
   color: #ffb22c;
   padding: 20px;
   box-sizing: border-box;
-  overflow: hidden;
   position: relative;
 }
 
@@ -110,7 +109,7 @@ onMounted(() => {
 
 .catchphrase {
   font-size: 1.6em;
-  margin-top: 20px;
+  margin-top: 40px;
   opacity: 0;
   transition: all 0.3s ease;
   text-align: center;
@@ -118,7 +117,7 @@ onMounted(() => {
   letter-spacing: 1px;
   padding-top: 20px;
   color: #ffb22c;
-  margin: 0;
+  margin-bottom: 0;
 }
 
 .catchphrase.visible {
@@ -132,5 +131,23 @@ onMounted(() => {
   width: 1px;
   height: 1px;
   overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .home {
+    min-height: auto;
+    padding: 20px 10px;
+  }
+
+  .title {
+    margin-top: 20px;
+    margin-bottom: 5px;
+  }
+
+  .catchphrase {
+    font-size: 1.2em;
+    padding-top: 10px;
+    margin-bottom: 20px;
+  }
 }
 </style>
