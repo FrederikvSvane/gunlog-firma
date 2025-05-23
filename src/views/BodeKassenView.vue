@@ -4,6 +4,16 @@
 
 <template>
   <div class="bodekassen-container">
+    <a
+      href="https://qr.mobilepay.dk/box/7ca6a57d-2be1-468c-b86a-d97e4abc5e0c/pay-in"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="payment-link"
+    >
+      <div class="payment-container">
+        <div class="payment-text">BETAL BØDE</div>
+      </div>
+    </a>
     <h1 class="elegant-title">Bødekasse Regler</h1>
 
     <div class="intro-text">
@@ -137,6 +147,33 @@
   min-height: 100vh;
 }
 
+.payment-link {
+  text-decoration: none;
+  display: block;
+}
+
+.payment-container {
+  background: linear-gradient(135deg, #ffd700, #ffa500, #ff8c00);
+  padding: 15px;
+  margin: -20px -20px 30px -20px; /* Negative margins to span full width */
+  box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.payment-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(255, 215, 0, 0.5);
+}
+
+.payment-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: black;
+  letter-spacing: 0.1em;
+  font-family: Georgia, serif;
+}
+
 .elegant-title {
   font-family: "Lucida Calligraphy", cursive, serif;
   font-size: 2rem;
@@ -213,6 +250,10 @@
   .intro-text,
   .rules-container {
     padding: 0 10px;
+  }
+
+  .payment-text {
+    font-size: 1.2rem;
   }
 }
 </style>

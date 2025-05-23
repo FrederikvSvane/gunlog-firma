@@ -1,5 +1,59 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed, onMounted, onUnmounted } from "vue";
+
+const currentDate = ref(new Date());
+let intervalId: number | null = null;
+
+// Update date every day at midnight
+onMounted(() => {
+  // Update immediately
+  currentDate.value = new Date();
+
+  // Calculate milliseconds until midnight
+  const now = new Date();
+  const tomorrow = new Date(now);
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  tomorrow.setHours(0, 0, 0, 0);
+  const msUntilMidnight = tomorrow.getTime() - now.getTime();
+
+  // Set timeout for first midnight, then interval for every 24 hours
+  setTimeout(() => {
+    currentDate.value = new Date();
+    intervalId = window.setInterval(() => {
+      currentDate.value = new Date();
+    }, 24 * 60 * 60 * 1000); // 24 hours
+  }, msUntilMidnight);
+});
+
+onUnmounted(() => {
+  if (intervalId) {
+    clearInterval(intervalId);
+  }
+});
+
+const daysUntilGunlog = computed(() => {
+  const today = new Date(currentDate.value);
+  const currentYear = today.getFullYear();
+
+  // Set target date to July 16th
+  let targetDate = new Date(currentYear, 6, 16); // Month is 0-indexed, so 6 = July
+
+  // If we've passed July 16th this year, target next year
+  if (today > targetDate) {
+    targetDate = new Date(currentYear + 1, 6, 16);
+  }
+
+  // Calculate difference in days
+  const diffTime = targetDate.getTime() - today.getTime();
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+  // If it's July 16th, return 365
+  if (diffDays === 0) {
+    return 365;
+  }
+
+  return diffDays;
+});
 
 const members = ref([
   {
@@ -91,6 +145,11 @@ const members = ref([
 
 <template>
   <div class="medlemmer-container">
+    <div class="countdown-container">
+      <div class="countdown-text">
+        {{ daysUntilGunlog }} DAGE INDTIL NÆSTE GUNLØG
+      </div>
+    </div>
     <h1 class="elegant-title">Medlemmer</h1>
     <p class="intro-text">
       Hver person på denne liste ejer aktier og Rolex for mere end 18 mia. dkk.
@@ -117,6 +176,21 @@ const members = ref([
   padding: 20px;
   text-align: center;
   min-height: 100vh;
+}
+
+.countdown-container {
+  background: linear-gradient(135deg, #ffd700, #ffa500, #ff8c00);
+  padding: 15px;
+  margin: -20px -20px 30px -20px; /* Negative margins to span full width */
+  box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
+}
+
+.countdown-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: black;
+  letter-spacing: 0.1em;
+  font-family: Georgia, serif;
 }
 
 .elegant-title {
@@ -183,6 +257,10 @@ const members = ref([
 
   .members-grid {
     padding: 0 10px;
+  }
+
+  .countdown-text {
+    font-size: 1.2rem;
   }
 }
 </style>
